@@ -26,13 +26,13 @@ export function Comment({content, onDeleteComment}: CommentProps) {
 
 return (
     <div className={styles.comment}>
-     <Avatar hasBorder={false} src="https://pbs.twimg.com/media/GBkTXRNWwAAgBVU?format=jpg&name=large" />
+     <Avatar hasBorder={false} src="https://avatars.githubusercontent.com/u/107769757?s=400&u=36e0487db441064ae9f8454876dcdd7f668954a6&v=4" />
 
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
-              <strong> neschii</strong>
+              <strong> Manoella</strong>
               <time
                 title="16 de Abril às 15:56h"
                 dateTime="2024-04-16 15:56:32"

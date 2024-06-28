@@ -1,11 +1,11 @@
 import { Header } from './components/Header'
-import { Post } from './components/Post'
+import { Post, PostType } from './components/Post'
 import { Sidebar } from './components/Sidebar'
 
 import styles from './App.module.css'
 import './global.css'
 
-const posts = [
+const posts: PostType[] = [
   { 
     id: 1,
     author: { 
@@ -23,13 +23,13 @@ const posts = [
     { 
     id: 2,
     author: { 
-      avatarUrl: 'https://pbs.twimg.com/profile_images/1744065252348624896/TiaX0B0z_400x400.jpg', 
-      name: 'Miguel Arganoz',
+      avatarUrl: 'https://avatars.githubusercontent.com/u/28929274?s=280&v=4', 
+      name: 'RocketSeat',
       role: 'Programador'
     },
       content: [
-      { type: 'paragraph', content: 'Mára Calë. A Ariana Grande é muito diva!' },
-      { type: 'paragraph', content: 'Ouvindo o album #Eternal Sunshine, alguem avisa que ela tem os vocais impecaveis? '},
+      { type: 'paragraph', content: 'Mais um projeto concluido da RocketSeat do curso de ReactJS' },
+      { type: 'paragraph', content: 'Dessa vez começamos com um projeto de criar um feed de atividades, imitando uma rede social! '},
     ],
       publishedAt: new Date('2024-04-20 15:30:23'),
   },
@@ -47,9 +47,7 @@ export function App() {
               return ( 
                   <Post 
                     key={post.id}
-                    author={post.author}
-                    content={post.content}
-                    publishedAt={post.publishedAt}
+                    post={post}
                   />
              )
           })}

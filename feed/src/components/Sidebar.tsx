@@ -8,14 +8,14 @@ export function Sidebar() {
     <aside className={styles.Sidebar}>
       <img
         className={styles.cover}
-        src="https://images.unsplash.com/photo-1603665301175-57ba46f392bf?q=50&w=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        src="https://images.unsplash.com/photo-1558350283-8269d86681f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       />
 
       <div className={styles.profile}>
         <Avatar src="https://avatars.githubusercontent.com/u/107769757?s=400&u=36e0487db441064ae9f8454876dcdd7f668954a6&v=4"/>
 
-        <strong>neschii</strong>
-        <span>Streamer</span>
+        <strong>Manoella</strong>
+        <span>Front End Developer</span>
       </div>
 
       <footer>
