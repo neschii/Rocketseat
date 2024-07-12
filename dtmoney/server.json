@@ -5,7 +5,7 @@
       "description": "salário",
       "type": "income",
       "category": "recebido",
-      "price": 2000,
+      "price": 2 000,
       "createdAt": "2024-07-09T17:40:32.505Z"
     },
             {
