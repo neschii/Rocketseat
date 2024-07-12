@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Index";
 import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
@@ -7,35 +8,57 @@ import {
   TransactionsTable,
 } from "./styles";
 
+interface Transaction { 
+  id: number;
+  description: string;
+  type: 'income' | 'outcome';
+  category: string;
+  price: number;
+  createdAt: string;
+}
+
 export function Transactions() {
+  const [transactions, setTransactions] = useState<Transaction[]>([])
+
+  async function loadTransactions() {
+    const response = await fetch('http://localhost:3333/transactions')
+    const data = await response.json();
+
+    setTransactions(data);
+  }
+
+  useEffect(() => { 
+    loadTransactions
+  }, [])
+
   return (
     <div>
       <Header />
       <Summary />
+
       <TransactionsContainer>
         <SearchForm />
+
         <TransactionsTable>
           <tbody>
-            <tr>
-              <td width="50%">Pagamento</td>
+            {transactions.map(transaction => { 
+              return (
+              <tr key={transaction.id}>
+              <td width="50%">{transaction.description}</td>
               <td>
-                <PriceHighlight variant="income">+ R$ 2.000</PriceHighlight>{" "}
+               <PriceHighlight variant={transaction.type}>
+                 {transaction.price}
+              </PriceHighlight>
               </td>
-              <td>Recebido</td>
-              <td>09/07/24</td>
+              <td>{transaction.category}</td>
+              <td>{transaction.createdAt}</td>
             </tr>
-
-            <tr>
-              <td width="50%"> SHEIN</td>
-              <td>
-                <PriceHighlight variant="outcome">- R$ 298,52</PriceHighlight>
-              </td>
-              <td>Compra</td>
-              <td>09/07/24</td>
-            </tr>
+            ) })}
+          
+          
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
     </div>
-  );
+  )
 }

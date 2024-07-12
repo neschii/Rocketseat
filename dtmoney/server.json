@@ -1,0 +1,20 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "salário",
+      "type": "income",
+      "category": "recebido",
+      "price": 2000,
+      "createdAt": "2024-07-09T17:40:32.505Z"
+    },
+            {
+      "id": 2,
+      "description": "SHEIN",
+      "type": "outcome",
+      "category": "Roupa",
+      "price": 298.52,
+      "createdAt": "2024-07-12T17:40:32.505Z"
+    }
+  ]
+}
