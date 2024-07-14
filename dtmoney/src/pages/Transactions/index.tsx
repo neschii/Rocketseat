@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Header } from "../../components/Header/Index";
 import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";

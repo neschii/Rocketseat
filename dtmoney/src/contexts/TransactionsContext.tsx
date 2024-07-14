@@ -9,8 +9,6 @@ interface Transaction {
   createdAt: string;
 }
 
-
-
 interface TransactionContextType {
     transactions: Transaction[];
 }
