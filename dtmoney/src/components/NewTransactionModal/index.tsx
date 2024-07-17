@@ -7,10 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
 
-
 const newTransactionFormSchema = z.object({
   description: z.string(),
-  price: z.number(),
+  price: z.preprocess((value) => {
+    if (typeof value === 'string') {
+      return parseFloat(value.replace(',', '.'));
+    }
+    return value;
+  }, z.number().positive()),
   category: z.string(),
   type: z.enum(['income', 'outcome']),
 });
@@ -18,13 +22,14 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
-  const { createTransaction } = useContext(TransactionsContext)
+  const { createTransaction } = useContext(TransactionsContext);
 
   const {
     control,
     register,
     handleSubmit,
     formState: { isSubmitting },
+    setValue,
     reset,
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
@@ -33,16 +38,21 @@ export function NewTransactionModal() {
     },
   });
 
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setValue('price', value.replace('.', ','));
+  };
+
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     const { description, price, category, type } = data;
     await createTransaction({
-    description,
-    price,
-    category,
-    type,
-  })
-  
-  reset();
+      description,
+      price,
+      category,
+      type,
+    });
+
+    reset();
   }
 
   return (
@@ -61,10 +71,11 @@ export function NewTransactionModal() {
             {...register('description')}
           />
           <input
-            type="number"
+            type="text"
             placeholder="Preço"
             required
-            {...register('price', { valueAsNumber: true })}
+            onChange={handlePriceChange}
+            {...register('price', { valueAsNumber: false })}
           />
           <input
             type="text"

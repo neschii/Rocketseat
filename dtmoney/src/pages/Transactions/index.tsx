@@ -8,11 +8,14 @@ import {
   TransactionsTable,
 } from "./styles";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
-import { priceFormatter } from "../../utils/formatter";
+import {  dateFormatter, priceFormatter } from "../../utils/formatter";
 
 export function Transactions() {
 const { transactions } = useContext(TransactionsContext);
 
+const isValidDate = (date) => {
+  return !isNaN(Date.parse(date));
+}
 
   return (
     <div>
@@ -23,21 +26,24 @@ const { transactions } = useContext(TransactionsContext);
         <SearchForm />
 
         <TransactionsTable>
-          <tbody>
-            {transactions.map(transaction => (
-              <tr key={transaction.id}>
-                <td width="50%">{transaction.description}</td>
-                <td>
-                  <PriceHighlight variant={transaction.type}>
-                    {transaction.type === 'outcome' && '- '}
-                    {priceFormatter.format(transaction.price)}
-                  </PriceHighlight>
-                </td>
-                <td>{transaction.category}</td>
-                <td>{transaction.createdAt}</td>
-              </tr>
-            ))}
-          </tbody>
+<tbody>
+  {transactions.map(transaction => (
+    <tr key={transaction.id}>
+      <td width="50%">{transaction.description}</td>
+      <td>
+        <PriceHighlight variant={transaction.type}>
+          {transaction.type === 'outcome' && '- '}
+          {transaction.type === 'income' && '+ '}
+          {priceFormatter.format(transaction.price)}
+        </PriceHighlight>
+      </td>
+      <td>{transaction.category}</td>
+      <td>
+        {isValidDate(transaction.createdAt) ? dateFormatter.format(new Date(transaction.createdAt)) : 'Data Inválida'}
+      </td>
+    </tr>
+  ))}
+</tbody>
         </TransactionsTable>
       </TransactionsContainer>
     </div>

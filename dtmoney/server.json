@@ -6,7 +6,7 @@
       "type": "income",
       "category": "Recebido",
       "price": 2000,
-      "createdAt": "2024-07-09T17:40:32.505Z"
+      "createdAt": "2024-07-13T18:19:20.575Z"
     },
     {
       "id": 2,
@@ -14,22 +14,22 @@
       "type": "outcome",
       "category": "Roupa",
       "price": 298.52,
-      "createdAt": "2024-07-12T17:40:32.505Z"
+      "createdAt": "2024-07-15T18:19:20.575Z"
     },
     {
       "description": "DPSPORTS",
+      "price": 21.89,
       "category": "Comissão",
-      "price": 1770,
       "type": "income",
-      "createdAt": "2024-07-17T03:00:38.393Z",
+      "createdAt": "2024-07-17T21:55:49.485Z",
       "id": 3
     },
     {
-      "description": "DPSPORTS",
-      "price": 17.1,
-      "category": "Comissão",
+      "description": "teste",
+      "price": 13.1,
+      "category": "etste",
       "type": "income",
-      "createdAt": "2024-07-17T17:55:28.879Z",
+      "createdAt": "2024-07-17T22:16:05.789Z",
       "id": 4
     }
   ]
