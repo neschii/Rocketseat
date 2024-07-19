@@ -1,4 +1,5 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { createContext } from 'use-context-selector'
 import { api } from "../lib/axios";
 
 interface Transaction { 
@@ -48,7 +49,7 @@ setTransactions(response.data);
   }
 
 async function createTransaction(data: CreateTransactionInput) {
-    const { description, price, category, type } = data;
+  const { description, price, category, type } = data;
 
   const response = await api.post('transactions', { 
     description,
