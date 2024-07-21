@@ -1,9 +1,14 @@
-
+import type { Metadata } from "next";
 import { Roboto } from 'next/font/google'
+
+export const metadata: Metadata = {
+  title: "Ignite Shop",
+  description: "",
+};
 
 const roboto = Roboto({ 
   weight: ['400', '700'],
-  subsets: ['greek'],
+  subsets: ['latin'],
 })
 
 export default function RootLayout({
@@ -13,9 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br" className={roboto.className}>
-      <body>
-        <main>{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
